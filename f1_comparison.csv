@@ -1,6 +1,0 @@
-class_name,baseline_f1,synthetic_augmented_f1,f1_improvement,real_train_samples,synthetic_added
-Potato___healthy,0.742,0.895,+15.3%,30,400
-Apple___Cedar_apple_rust,0.785,0.921,+13.6%,30,400
-Peach___healthy,0.761,0.908,+14.7%,30,400
-Raspberry___healthy,0.803,0.934,+13.1%,30,400
-Tomato___Tomato_mosaic_virus,0.738,0.887,+14.9%,30,400
