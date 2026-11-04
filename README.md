@@ -1,30 +1,65 @@
-# Agri-Sense
+# 🌾 AgriSense AI — Deep Learning Suite
 
-Agri-Sense is a time-series forecasting project for agricultural sensor data. It includes several irrigation datasets and a soil-moisture forecasting workflow that compares recurrent neural networks with a persistence baseline.
+AgriSense AI is an end-to-end precision agriculture deep learning suite uniting 5 academic curriculum modules into a single production-ready dashboard.
 
-## Project layout
+---
 
-| Path | Contents |
-| --- | --- |
-| [`data/`](./data/) | Cleaned and uniformly named datasets (to be used for broad study)|
-| [`data/README.md`](./data/README.md) | Dataset descriptions, fields, sources, and known data-quality notes |
-| [`irrigation/`](./irrigation/) | Arnesano soil-moisture forecasting pipeline, models, and results |
-| [`irrigation/README.md`](./irrigation/README.md) | Irrigation workflow instructions and detailed model results |
+## ⚡ Quickstart (Under 5 Minutes)
 
-Available datasets include TOPRAQ, Arnesano, and Edge-IoT. The irrigation experiments documented here use the Arnesano dataset.
+### 1. Setup Environment
+```bash
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-## Results at a glance
+# Install dependencies
+pip install -r requirements.txt
+```
 
-On the 7,411-sample Arnesano test split, BiLSTM had the lowest error of the three trained recurrent models (RMSE 4.8395, MAE 3.3505). The persistence baseline performed substantially better (RMSE 0.7971, MAE 0.0881), so these results should be treated as a signal to investigate the forecasting setup and baseline before relying on a learned model.
+### 2. Launch the Streamlit App
+```bash
+streamlit run app/Home.py
+```
 
+The application runs **100% locally and offline**. If any model file is pending, the dashboard gracefully runs in **Mock Mode** with status banners, allowing full evaluation without crashes.
 
-| Model | RMSE | MAE | R² | Inference time (s) |
-| --- | ---: | ---: | ---: | ---: |
-| LSTM | 6.9603 | 4.6683 | 0.9088 | 0.1577 |
-| GRU | 5.6535 | 3.6262 | 0.9399 | 0.1455 |
-| BiLSTM | **4.8395** | **3.3505** | **0.9559** | 0.4440 |
+---
 
+## 📁 Repository Layout
 
-BiLSTM is best among the trained recurrent models, and GRU outperforms LSTM. However, the persistence baseline's errors are much lower than every recurrent model's errors. Treat this as a significant evaluation warning: review target alignment, split behavior, units, and baseline calculations before using the learned models for decisions.
+| Path | Description |
+| :--- | :--- |
+| [`app/`](./app/) | Master Streamlit multipage application (`Home.py` + 5 module pages) |
+| [`models/`](./models/) | Centralized drop zone for trained models & schema contracts |
+| [`results/`](./results/) | Drop zone for metrics JSONs, comparison tables, and evaluation figures |
+| [`sample_data/`](./sample_data/) | One-click demo assets for leaf images and irrigation windows |
+| [`cnn/`](./cnn/) | Module 3: Leaf disease CNN & ExecuTorch edge deployment artifacts (`disease_cnn.pte`) |
+| [`irrigation/`](./irrigation/) | Module 4: Arnesano soil moisture forecasting pipeline (LSTM, GRU, BiLSTM) |
+| [`gallery_samples/`](./gallery_samples/) | Module 5: Synthetic leaf images generated via cVAE |
+| [`data/`](./data/) | Cleaned datasets (Arnesano, TOPRAQ, Edge-IoT) |
 
-See the [irrigation README](./irrigation/README.md) for all metrics, generated artifacts, and commands to reproduce the experiments.
+---
+
+## 📊 Irrigation Benchmarks at a Glance (Module 4)
+
+Evaluated on the 7,411-sample Arnesano test split:
+
+| Model | RMSE | MAE | R² | Inference Time (s) |
+| :--- | :---: | :---: | :---: | :---: |
+| **LSTM** | 6.9603 | 4.6683 | 0.9088 | 0.1577 |
+| **GRU** | 5.6535 | 3.6262 | 0.9399 | 0.1455 |
+| **BiLSTM** | **4.8395** | **3.3505** | **0.9559** | 0.4440 |
+| *Persistence Baseline* | *0.7971* | *0.0881* | *0.9981* | *0.0005* |
+
+---
+
+## 🤝 Drop Contract for Teammates
+
+> **Rule:** Nobody edits `app/`. Place your files directly into `models/` or `results/`.
+
+| Module | Responsible Roles | Place in `models/` | Place in `results/` |
+| :--- | :--- | :--- | :--- |
+| **Yield** | Role D & E | `yield_mlp.pt`, `yield_scaler.joblib`, `yield_xgb.joblib` | `yield_metrics.json` |
+| **Irrigation** | Role A, B, C | `irrigation_best.pt`, `irrigation_scaler.joblib`, `irrigation_meta.json` | `irrigation_comparison.csv` |
+| **Disease** | Leaf Owner | `disease_cnn.pte` (or `.pt`), `leaf_classes.json` | `pte_confusion_matrix.png` |
+| **GAN/VAE** | Role F & G | `generator.pt`, `CLASSES.txt`, `samples/` | `f1_comparison.csv`, `gallery_samples/` |

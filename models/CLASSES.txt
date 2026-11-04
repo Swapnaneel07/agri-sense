@@ -1,0 +1,6 @@
+Potato___Late_blight
+Tomato___Target_Spot
+Pepper,_bell___Bacterial_spot
+Apple___Cedar_apple_rust
+Tomato___Late_blight
+

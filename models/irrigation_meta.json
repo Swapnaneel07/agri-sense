@@ -1,0 +1,34 @@
+{
+    "dataset": "Arnesano",
+    "features": [
+        "soil_moisture",
+        "soil_temperature",
+        "soil_temperature_deep",
+        "air_temperature",
+        "relative_humidity",
+        "rainfall",
+        "air_pressure",
+        "wind_speed",
+        "solar_radiation",
+        "hour_sin",
+        "hour_cos"
+    ],
+    "target": "soil_moisture",
+    "window_size": 24,
+    "horizons": [
+        1
+    ],
+    "input_shape": [
+        24,
+        11
+    ],
+    "output_shape": [
+        1
+    ],
+    "train_cutoff": "2025-08-16T06:30:00.000000",
+    "validation_cutoff": "2025-09-04T09:10:00.000000",
+    "train_windows": 10357,
+    "validation_windows": 8959,
+    "test_windows": 7411,
+    "scaling": "StandardScaler fitted on training rows only"
+}
