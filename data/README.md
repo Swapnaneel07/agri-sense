@@ -1,6 +1,6 @@
 # AgriSense AI, Module 4: Irrigation Datasets (Documentation)
 
-Group 10 | Neural Network and Deep Learning | Role A handover to B and C
+Group 9 | Neural Network and Deep Learning | Role A handover to B and C
 Purpose: time-series data to compare LSTM, GRU and BiLSTM for irrigation / soil-moisture forecasting.
 
 This file describes **three datasets**, the **uniform attribute names** used for all of them, and where each one came from.
