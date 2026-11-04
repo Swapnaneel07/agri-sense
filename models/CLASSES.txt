@@ -1,6 +1,5 @@
-Potato___Late_blight
-Tomato___Target_Spot
-Pepper,_bell___Bacterial_spot
+Potato___healthy
 Apple___Cedar_apple_rust
-Tomato___Late_blight
-
+Peach___healthy
+Raspberry___healthy
+Tomato___Tomato_mosaic_virus
