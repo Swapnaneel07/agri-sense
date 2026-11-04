@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.vscode/
+
+# Large dataset archives (GitHub rejects files > 100MB)
+*.zip
+*.tar.gz
+
+# Bulk image datasets (keep repo lightweight)
+data/raw/
+data/processed/synthetic/
+.ipynb_checkpoints/

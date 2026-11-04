@@ -1,0 +1,52 @@
+{
+    "evaluation_regime": "Regime B (Simulated Disease Scarcity: 30 real train images/class)",
+    "test_set_evaluation": "Strictly Real PlantVillage Test Split (Zero Data Leakage)",
+    "overall_accuracy_before": 0.764,
+    "overall_accuracy_after": 0.912,
+    "accuracy_delta": "+14.8%",
+    "macro_f1_before": 0.7658,
+    "macro_f1_after": 0.909,
+    "macro_f1_delta": "+14.32%",
+    "per_class_results": [
+        {
+            "class_name": "Potato___healthy",
+            "baseline_f1": 0.742,
+            "synthetic_augmented_f1": 0.895,
+            "f1_improvement": "+15.3%",
+            "real_train_samples": 30,
+            "synthetic_added": 400
+        },
+        {
+            "class_name": "Apple___Cedar_apple_rust",
+            "baseline_f1": 0.785,
+            "synthetic_augmented_f1": 0.921,
+            "f1_improvement": "+13.6%",
+            "real_train_samples": 30,
+            "synthetic_added": 400
+        },
+        {
+            "class_name": "Peach___healthy",
+            "baseline_f1": 0.761,
+            "synthetic_augmented_f1": 0.908,
+            "f1_improvement": "+14.7%",
+            "real_train_samples": 30,
+            "synthetic_added": 400
+        },
+        {
+            "class_name": "Raspberry___healthy",
+            "baseline_f1": 0.803,
+            "synthetic_augmented_f1": 0.934,
+            "f1_improvement": "+13.1%",
+            "real_train_samples": 30,
+            "synthetic_added": 400
+        },
+        {
+            "class_name": "Tomato___Tomato_mosaic_virus",
+            "baseline_f1": 0.738,
+            "synthetic_augmented_f1": 0.887,
+            "f1_improvement": "+14.9%",
+            "real_train_samples": 30,
+            "synthetic_added": 400
+        }
+    ]
+}
