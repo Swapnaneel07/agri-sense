@@ -1,10 +1,7 @@
-# AgriSense AI – Member C Documentation
+# AgriSense AI – LSTM, GRU, BiLSTM Documentation
 
-## 1. Role and Responsibilities
 
-Member C is responsible for the BiLSTM model implementation, training, evaluation, visualization, model comparison utilities, and prediction pipeline.
-
-## 2. Dataset
+## 1. Dataset
 
 * Dataset: Arnesano
 * Target variable: `soil_moisture`
@@ -15,7 +12,7 @@ Member C is responsible for the BiLSTM model implementation, training, evaluatio
 
 The dataset is divided chronologically into training, validation, and testing sets.
 
-## 3. BiLSTM Architecture
+## 3\2. BiLSTM Architecture
 
 The implemented model uses:
 
@@ -100,7 +97,15 @@ The `compare.py` module reads available model evaluation files and generates:
 * RMSE comparison plot
 * MAE comparison plot
 
-LSTM and GRU results are not currently available. Therefore, a final winner has not been selected.
+LSTM and GRU were trained using the same prepared data splits and evaluation pipeline as BiLSTM. Their recurrent layers use 64 hidden units, two layers, and 0.2 dropout; training uses AdamW, MSE loss, gradient clipping, and early stopping.
+
+| Model | RMSE | MAE | R² | Inference time (s) |
+| ----- | ---: | --: | -: | -----------------: |
+| LSTM | 6.9603 | 4.6683 | 0.9088 | 0.1577 |
+| GRU | 5.6535 | 3.6262 | 0.9399 | 0.1455 |
+| BiLSTM | 4.8395 | 3.3505 | 0.9559 | 0.4440 |
+
+BiLSTM has the best error metrics among the three recurrent models, and GRU outperforms LSTM. However, the persistence baseline (RMSE 0.7971, MAE 0.0881) remains substantially better than all three learned models.
 
 ## 9. Output Files
 
@@ -108,6 +113,20 @@ LSTM and GRU results are not currently available. Therefore, a final winner has 
 outputs/
 │
 ├── bilstm/
+│   ├── best.pt
+│   ├── config.json
+│   ├── history.json
+│   ├── metrics.json
+│   ├── actual_test.npy
+│   └── preds_test.npy
+├── gru/
+│   ├── best.pt
+│   ├── config.json
+│   ├── history.json
+│   ├── metrics.json
+│   ├── actual_test.npy
+│   └── preds_test.npy
+├── lstm/
 │   ├── best.pt
 │   ├── config.json
 │   ├── history.json
@@ -133,20 +152,14 @@ src/
 ├── evaluate.py
 ├── plot_results.py
 ├── compare.py
+├── prepare_data.py
+├── train_recurrent
 └── predict.py
 ```
 
-## 10. Limitations and Future Work
 
-* Complete LSTM and GRU comparison when their evaluation results become available.
-* Investigate the distribution shift observed in Sector 5.
-* Review preprocessing consistency with the official dataset documentation.
-* Compare all models against the persistence baseline.
-* Select the final model using validation RMSE.
-* Validate predictions on additional data before practical irrigation deployment.
+## 10. Conclusion
 
-## 11. Conclusion
+The LSTM, GRU, BiLSTM training, evaluation, visualization, and prediction pipeline have been implemented successfully for the Arnesano soil moisture forecasting task.
 
-The BiLSTM training, evaluation, visualization, and prediction pipeline have been implemented successfully for the Arnesano soil moisture forecasting task.
 
-The current evaluation shows that the persistence baseline performs better than BiLSTM. Further comparison and validation are required before selecting a final forecasting model.
