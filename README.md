@@ -17,4 +17,14 @@ Available datasets include TOPRAQ, Arnesano, and Edge-IoT. The irrigation experi
 
 On the 7,411-sample Arnesano test split, BiLSTM had the lowest error of the three trained recurrent models (RMSE 4.8395, MAE 3.3505). The persistence baseline performed substantially better (RMSE 0.7971, MAE 0.0881), so these results should be treated as a signal to investigate the forecasting setup and baseline before relying on a learned model.
 
+
+| Model | RMSE | MAE | R² | Inference time (s) |
+| --- | ---: | ---: | ---: | ---: |
+| LSTM | 6.9603 | 4.6683 | 0.9088 | 0.1577 |
+| GRU | 5.6535 | 3.6262 | 0.9399 | 0.1455 |
+| BiLSTM | **4.8395** | **3.3505** | **0.9559** | 0.4440 |
+| Persistence baseline | **0.7971** | **0.0881** | — | — |
+
+BiLSTM is best among the trained recurrent models, and GRU outperforms LSTM. However, the persistence baseline's errors are much lower than every recurrent model's errors. Treat this as a significant evaluation warning: review target alignment, split behavior, units, and baseline calculations before using the learned models for decisions.
+
 See the [irrigation README](./irrigation/README.md) for all metrics, generated artifacts, and commands to reproduce the experiments.
