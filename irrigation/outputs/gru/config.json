@@ -1,0 +1,15 @@
+{
+    "model": "GRU",
+    "seed": 42,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "max_epochs": 100,
+    "patience": 10,
+    "hidden_size": 64,
+    "num_layers": 2,
+    "dropout": 0.2,
+    "best_epoch": 36,
+    "best_validation_loss": 0.003959992423940307,
+    "training_time_seconds": 33.90411639213562
+}

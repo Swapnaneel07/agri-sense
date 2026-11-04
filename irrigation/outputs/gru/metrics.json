@@ -1,0 +1,14 @@
+{
+    "model": "GRU",
+    "dataset": "Arnesano",
+    "target": "soil_moisture",
+    "horizon_steps": 1,
+    "test_samples": 7411,
+    "RMSE": 5.653514727585346,
+    "MAE": 3.6261518001556396,
+    "R2": 0.9398546814918518,
+    "inference_time_seconds": 0.14546310000014273,
+    "inference_time_per_sample_seconds": 1.9627998920542807e-05,
+    "persistence_RMSE": 0.7970817940036061,
+    "persistence_MAE": 0.08811283662077318
+}
