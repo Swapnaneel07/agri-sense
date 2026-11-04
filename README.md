@@ -23,7 +23,7 @@ On the 7,411-sample Arnesano test split, BiLSTM had the lowest error of the thre
 | LSTM | 6.9603 | 4.6683 | 0.9088 | 0.1577 |
 | GRU | 5.6535 | 3.6262 | 0.9399 | 0.1455 |
 | BiLSTM | **4.8395** | **3.3505** | **0.9559** | 0.4440 |
-| Persistence baseline | **0.7971** | **0.0881** | — | — |
+
 
 BiLSTM is best among the trained recurrent models, and GRU outperforms LSTM. However, the persistence baseline's errors are much lower than every recurrent model's errors. Treat this as a significant evaluation warning: review target alignment, split behavior, units, and baseline calculations before using the learned models for decisions.
 
