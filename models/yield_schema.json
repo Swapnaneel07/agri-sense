@@ -1,0 +1,77 @@
+{
+  "features": [
+    {
+      "name": "nitrogen",
+      "label": "Nitrogen (N) [mg/kg]",
+      "type": "float",
+      "min": 0.0,
+      "max": 140.0,
+      "default": 85.0,
+      "step": 1.0,
+      "description": "Available soil mineral nitrogen content"
+    },
+    {
+      "name": "phosphorus",
+      "label": "Phosphorus (P) [mg/kg]",
+      "type": "float",
+      "min": 0.0,
+      "max": 120.0,
+      "default": 52.0,
+      "step": 1.0,
+      "description": "Extractable phosphorus level"
+    },
+    {
+      "name": "potassium",
+      "label": "Potassium (K) [mg/kg]",
+      "type": "float",
+      "min": 0.0,
+      "max": 120.0,
+      "default": 48.0,
+      "step": 1.0,
+      "description": "Exchangeable potassium level"
+    },
+    {
+      "name": "temperature",
+      "label": "Temperature (°C)",
+      "type": "float",
+      "min": 10.0,
+      "max": 45.0,
+      "default": 26.5,
+      "step": 0.1,
+      "description": "Mean canopy and ambient surface temperature"
+    },
+    {
+      "name": "humidity",
+      "label": "Relative Humidity (%)",
+      "type": "float",
+      "min": 10.0,
+      "max": 100.0,
+      "default": 78.0,
+      "step": 0.5,
+      "description": "Atmospheric water vapor saturation"
+    },
+    {
+      "name": "ph",
+      "label": "Soil pH Level",
+      "type": "float",
+      "min": 3.5,
+      "max": 9.5,
+      "default": 6.5,
+      "step": 0.1,
+      "description": "Soil acidity / alkalinity index"
+    },
+    {
+      "name": "rainfall",
+      "label": "Annual Rainfall (mm)",
+      "type": "float",
+      "min": 100.0,
+      "max": 2500.0,
+      "default": 1120.0,
+      "step": 10.0,
+      "description": "Cumulative seasonal precipitation"
+    }
+  ],
+  "target": "crop_yield_tons_ha",
+  "units": "metric tons / hectare"
+}
+

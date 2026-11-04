@@ -1,0 +1,14 @@
+{
+    "model": "BiLSTM",
+    "dataset": "Arnesano",
+    "target": "soil_moisture",
+    "horizon_steps": 1,
+    "test_samples": 7411,
+    "RMSE": 4.839531027086591,
+    "MAE": 3.3505053520202637,
+    "R2": 0.9559271335601807,
+    "inference_time_seconds": 0.4440187000000151,
+    "inference_time_per_sample_seconds": 5.9913466468764684e-05,
+    "persistence_RMSE": 0.7970817881974096,
+    "persistence_MAE": 0.08811328705564218
+}
