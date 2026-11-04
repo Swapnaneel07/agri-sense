@@ -1,0 +1,14 @@
+{
+    "model": "LSTM",
+    "dataset": "Arnesano",
+    "target": "soil_moisture",
+    "horizon_steps": 1,
+    "test_samples": 7411,
+    "RMSE": 6.960312460977837,
+    "MAE": 4.668330192565918,
+    "R2": 0.9088362455368042,
+    "inference_time_seconds": 0.15765970000029483,
+    "inference_time_per_sample_seconds": 2.1273741735298183e-05,
+    "persistence_RMSE": 0.7970817940036061,
+    "persistence_MAE": 0.08811283662077318
+}
