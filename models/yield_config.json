@@ -1,0 +1,19 @@
+{
+  "config": {
+    "hidden_units": [
+      128,
+      64,
+      32
+    ],
+    "activation": "relu",
+    "optimizer": "adam",
+    "learning_rate": 0.001,
+    "batch_size": 128,
+    "epochs": 100,
+    "dropout": 0.1,
+    "l2": 0.0,
+    "initializer": "glorot_uniform",
+    "batch_norm": false
+  },
+  "early_stopping_patience": 10
+}

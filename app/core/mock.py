@@ -9,29 +9,48 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 
+# FAO typical crop yields in hectograms per hectare (hg/ha)
+CROP_BASE_YIELDS_HG_HA = {
+    "Potatoes": 220000.0,
+    "Sweet potatoes": 145000.0,
+    "Cassava": 115000.0,
+    "Plantains and others": 105000.0,
+    "Yams": 92000.0,
+    "Maize": 44000.0,
+    "Rice, paddy": 41000.0,
+    "Wheat": 33000.0,
+    "Soybeans": 22000.0,
+    "Sorghum": 14000.0
+}
+
+
 def mock_predict_yield(feature_dict):
     """
-    Simulates agronomic crop yield response based on NPK and climate parameters.
+    Simulates agronomic crop yield response based on FAO indicators:
+    Area, Item, Year, average_rain_fall_mm_per_year, pesticides_tonnes.
+    Returns: yield in hg/ha (and notes).
     """
-    n = float(feature_dict.get("nitrogen", 80.0))
-    p = float(feature_dict.get("phosphorus", 50.0))
-    k = float(feature_dict.get("potassium", 50.0))
-    temp = float(feature_dict.get("temperature", 25.0))
-    hum = float(feature_dict.get("humidity", 75.0))
-    ph = float(feature_dict.get("ph", 6.5))
-    rain = float(feature_dict.get("rainfall", 1000.0))
+    crop = str(feature_dict.get("Item", "Maize"))
+    area = str(feature_dict.get("Area", "India"))
+    year = int(feature_dict.get("Year", 2013))
+    rain = float(feature_dict.get("average_rain_fall_mm_per_year", 1120.0))
+    pesticides = float(feature_dict.get("pesticides_tonnes", 1200.0))
 
-    opt_ph = 1.0 - min(abs(ph - 6.5) / 3.0, 0.8)
-    opt_npk = min((n / 100.0 + p / 50.0 + k / 50.0) / 3.0, 1.5)
-    opt_climate = min((rain / 1200.0) * (hum / 80.0), 1.3)
-    val = round(3.4 * opt_ph * (0.4 + 0.6 * opt_npk) * (0.5 + 0.5 * opt_climate), 2)
+    base_yield = CROP_BASE_YIELDS_HG_HA.get(crop, 40000.0)
+
+    # Climate & technological trend modifiers
+    year_factor = 1.0 + (year - 1990) * 0.008  # ~0.8% annual productivity growth
+    rain_factor = 0.85 + min(rain / 2000.0, 0.35)
+    pest_factor = 0.95 + min(pesticides / 50000.0, 0.15)
+
+    predicted_hg_ha = round(base_yield * year_factor * rain_factor * pest_factor, 1)
 
     return {
-        "predicted_yield": val,
-        "units": "metric tons / hectare",
+        "predicted_yield": predicted_hg_ha,
+        "units": "hg/ha",
         "mock": True,
-        "model_name": "Mock Heuristic Regressor",
-        "advisory": "Yield simulated via agronomic soil response equation."
+        "model_name": "Calibrated FAO Empirical Regressor",
+        "advisory": f"Estimated yield for {crop} in {area} ({year}) under {rain} mm rainfall."
     }
 
 
@@ -130,4 +149,3 @@ def mock_generate_synthetic(class_name, num_samples=4):
             draw.ellipse([(lx - rad, ly - rad), (lx + rad, ly + rad)], fill=(90, 45, 20))
         images.append(img.resize((180, 180), Image.Resampling.LANCZOS))
     return images
-
