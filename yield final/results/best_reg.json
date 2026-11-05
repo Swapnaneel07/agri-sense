@@ -1,0 +1,12 @@
+{
+  "variant": "Dropout=0.1",
+  "overrides": {
+    "dropout": 0.1
+  },
+  "early_stopping_patience": 10,
+  "val_rmse": 14030.57239403532,
+  "best_regularized_variant": "Dropout=0.1",
+  "best_regularized_overrides": {
+    "dropout": 0.1
+  }
+}

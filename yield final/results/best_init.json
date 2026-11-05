@@ -1,0 +1,5 @@
+{
+  "initializer": "glorot_uniform",
+  "activation": "relu",
+  "val_rmse": 14252.312648546782
+}
